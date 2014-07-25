@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <config>
-   <!-- <tabs>
-        <birthdayreminder_tab translate="label" module="birthdayreminder">
-            <label>Lembrete de Aniversário</label>
-            <sort_order>100</sort_order>
-        </birthdayreminder_tab>
-    </tabs> -->
+  <tabs>
+      <birthdayreminder translate="label" module="BirthdayReminder">
+          <label>DSalvagni Lembretes</label>
+          <sort_order>100</sort_order>
+      </birthdayreminder>
+  </tabs>
   <sections>
-    <birthdayreminder translate="label">
-      <label>Lembrete de Aniversário</label>
-      <tab>customer</tab>
+    <birthdayreminder translate="label" module="BirthdayReminder">
+      <label>DSalvagni - Lembrete de Aniversário</label>
+      <tab>birthdayreminder</tab>
       <frontend_type>text</frontend_type>
       <sort_order>1000</sort_order>
       <show_in_default>1</show_in_default>
@@ -36,18 +36,6 @@
               <show_in_website>1</show_in_website>
               <show_in_store>1</show_in_store>
             </habilitado>
-           <!--  <horario translate="label comment">
-              <label>Horário</label>
-              <comment>
-                <![CDATA[Horário que será enviado o e-mail]]>
-              </comment>
-              <frontend_type>time</frontend_type>
-              <sort_order>20</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <validate>required-entry</validate>
-            </horario> -->
             <remetente translate="label">
                 <label>E-mail que fará o envio</label>
                 <frontend_type>select</frontend_type>
@@ -166,23 +154,6 @@
                 <cupom_data_aniversario_habilitado>1</cupom_data_aniversario_habilitado>
               </depends>
             </promocao_aniversario>
-
-            <!-- <usos_cupom_aniversario translate="label comment">
-              <label>Usos do Cupom</label>
-              <comment>
-                <![CDATA[Quantas vezes o cupom pode ser utilizado. "0" para ilimitado. Padrão: 1]]>
-              </comment>
-              <frontend_type>text</frontend_type>
-              <sort_order>30</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <validate>validate-number required-entry</validate>
-              <depends>
-                <cupom_data_aniversario_habilitado>1</cupom_data_aniversario_habilitado>
-              </depends>
-            </usos_cupom_aniversario> -->
-
             <validade_cupom_aniversario translate="label comment">
               <label>Validade</label>
               <comment>
@@ -256,23 +227,6 @@
                 <cupom_aniversariante>1</cupom_aniversariante>
               </depends>
             </promocao_aniversariante>
-
-            <!-- <usos_cupom_aniversariante translate="label comment">
-              <label>Usos do Cupom</label>
-              <comment>
-                <![CDATA[Quantas vezes o cupom pode ser utilizado. "0" para ilimitado. Padrão: 1]]>
-              </comment>
-              <frontend_type>text</frontend_type>
-              <sort_order>30</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <validate>validate-number required-entry</validate>
-              <depends>
-                <cupom_aniversariante>1</cupom_aniversariante>
-              </depends>
-            </usos_cupom_aniversariante> -->
-
             <validade_cupom_aniversariante translate="label comment">
               <label>Validade</label>
               <comment>
