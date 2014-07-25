@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<config>
+   <!-- <tabs>
+        <birthdayreminder_tab translate="label" module="birthdayreminder">
+            <label>Lembrete de Aniversário</label>
+            <sort_order>100</sort_order>
+        </birthdayreminder_tab>
+    </tabs> -->
+  <sections>
+    <birthdayreminder translate="label">
+      <label>Lembrete de Aniversário</label>
+      <tab>customer</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>1000</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <envio translate="label">
+          <label>Configurações de Envio</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>100</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <habilitado translate="label comment">
+              <label>Habilitado</label>
+              <comment>
+                <![CDATA[Ativar o envio de e-mails para aniversariantes. É preciso ativar o cron task do Magento.]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </habilitado>
+           <!--  <horario translate="label comment">
+              <label>Horário</label>
+              <comment>
+                <![CDATA[Horário que será enviado o e-mail]]>
+              </comment>
+              <frontend_type>time</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>required-entry</validate>
+            </horario> -->
+            <remetente translate="label">
+                <label>E-mail que fará o envio</label>
+                <frontend_type>select</frontend_type>
+                <source_model>adminhtml/system_config_source_email_identity</source_model>
+                <sort_order>25</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <depends>
+                  <enviar_data_aniversario>1</enviar_data_aniversario>
+                </depends>
+            </remetente>
+            <enviar_data_aniversario translate="label comment">
+              <label>Enviar no dia do aniversário</label>
+              <comment>
+                <![CDATA[Enviar um e-mail no dia do aniversário. Caso a opção de enviar no "Mês do aniversariante" esteja ativa,
+                somente este e-mail será enviado na data de aniversário.]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </enviar_data_aniversario>
+            <template_data_aniversario translate="label">
+                <label>Template para o "Dia do Aniversário"</label>
+                <frontend_type>select</frontend_type>
+                <source_model>adminhtml/system_config_source_email_template</source_model>
+                <sort_order>40</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <depends>
+                  <enviar_data_aniversario>1</enviar_data_aniversario>
+                </depends>
+            </template_data_aniversario>
+            <enviar_mes_aniversariante translate="label comment">
+              <label>Mês do Aniversariante</label>
+              <comment>
+                <![CDATA[Envia e-mail durante o mês de aniversário. O envio é interrompido quando o cliente fizer uma compra.]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </enviar_mes_aniversariante>
+            <template_mes_aniversario translate="label">
+                <label>Template para o "Mês do Aniversáriante"</label>
+                <frontend_type>select</frontend_type>
+                <source_model>adminhtml/system_config_source_email_template</source_model>
+                <sort_order>60</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <depends>
+                  <enviar_mes_aniversariante>1</enviar_mes_aniversariante>
+                </depends>
+            </template_mes_aniversario>
+            <intervalo translate="label comment">
+              <label>Intervalo de Dias</label>
+              <comment>
+                <![CDATA[Intervalo de dias entre cada envio.]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>70</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>validate-number required-entry</validate>
+              <depends>
+                <enviar_mes_aniversariante>1</enviar_mes_aniversariante>
+              </depends>
+            </intervalo>
+          </fields>
+        </envio>
+
+
+        <cupom_data_aniversario>
+          <label>Dia do Aniversário (Configurações de Cupom)</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>200</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <cupom_data_aniversario_habilitado translate="label comment">
+              <label>Habilitado</label>
+              <comment>
+                <![CDATA[Ativar o envio de um cupom relacionado a promoção.]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </cupom_data_aniversario_habilitado>
+
+            <promocao_aniversario translate="label comment">
+              <label>Promoção Relacionada</label>
+              <comment>
+                <![CDATA[É necessário ter uma promoção de regra de carrinho ativa]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>DSalvagni_BirthdayReminder_Model_Source_Promotion</source_model>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <cupom_data_aniversario_habilitado>1</cupom_data_aniversario_habilitado>
+              <validate>required-entry</validate>
+              <depends>
+                <cupom_data_aniversario_habilitado>1</cupom_data_aniversario_habilitado>
+              </depends>
+            </promocao_aniversario>
+
+            <!-- <usos_cupom_aniversario translate="label comment">
+              <label>Usos do Cupom</label>
+              <comment>
+                <![CDATA[Quantas vezes o cupom pode ser utilizado. "0" para ilimitado. Padrão: 1]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>validate-number required-entry</validate>
+              <depends>
+                <cupom_data_aniversario_habilitado>1</cupom_data_aniversario_habilitado>
+              </depends>
+            </usos_cupom_aniversario> -->
+
+            <validade_cupom_aniversario translate="label comment">
+              <label>Validade</label>
+              <comment>
+                <![CDATA[Quantidade de dias que o cupom é válido a partir do primeiro envio do e-mail.]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>validate-number required-entry</validate>
+              <depends>
+                <cupom_data_aniversario_habilitado>1</cupom_data_aniversario_habilitado>
+              </depends>
+            </validade_cupom_aniversario>
+
+            <prefixo_cupom_aniversario translate="label comment">
+              <label>Prefixo do Cupom</label>
+              <comment>
+                <![CDATA[Máximo de 3 caracteres.]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>required-entry validate-length maximun-length-3</validate>
+              <depends>
+                <cupom_data_aniversario_habilitado>1</cupom_data_aniversario_habilitado>
+              </depends>
+            </prefixo_cupom_aniversario>
+
+          </fields>
+        </cupom_data_aniversario>
+
+        <cupom_mes_aniversariante>
+          <label>Mês do Aniversariante (Configurações de Cupom)</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>300</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <cupom_aniversariante translate="label comment">
+              <label>Habilitado</label>
+              <comment>
+                <![CDATA[Ativar o envio de um cupom relacionado a promoção.]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </cupom_aniversariante>
+
+            <promocao_aniversariante translate="label comment">
+              <label>Promoção Relacionada</label>
+              <comment>
+                <![CDATA[É necessário ter uma promoção de regra de carrinho ativa]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>DSalvagni_BirthdayReminder_Model_Source_Promotion</source_model>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <cupom_data_aniversario>1</cupom_data_aniversario>
+              <validate>required-entry</validate>
+              <depends>
+                <cupom_aniversariante>1</cupom_aniversariante>
+              </depends>
+            </promocao_aniversariante>
+
+            <!-- <usos_cupom_aniversariante translate="label comment">
+              <label>Usos do Cupom</label>
+              <comment>
+                <![CDATA[Quantas vezes o cupom pode ser utilizado. "0" para ilimitado. Padrão: 1]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>validate-number required-entry</validate>
+              <depends>
+                <cupom_aniversariante>1</cupom_aniversariante>
+              </depends>
+            </usos_cupom_aniversariante> -->
+
+            <validade_cupom_aniversariante translate="label comment">
+              <label>Validade</label>
+              <comment>
+                <![CDATA[Quantidade de dias que o cupom é válido a partir do primeiro envio do e-mail.]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>validate-number required-entry</validate>
+              <depends>
+                <cupom_aniversariante>1</cupom_aniversariante>
+              </depends>
+            </validade_cupom_aniversariante>
+
+            <prefixo translate="label comment">
+              <label>Prefixo do Cupom</label>
+              <comment>
+                <![CDATA[Máximo de 3 caracteres.]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>required-entry validate-length maximun-length-3</validate>
+              <depends>
+                <cupom_aniversariante>1</cupom_aniversariante>
+              </depends>
+            </prefixo>
+
+          </fields>
+        </cupom_mes_aniversariante>
+
+      </groups>
+    </birthdayreminder>
+  </sections>
+</config>

@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DSalvagni_BirthdayReminder>
+            <version>0.0.1</version>
+        </DSalvagni_BirthdayReminder>
+    </modules>
+
+    <global>
+    	<!-- INICIO DAS CONFIGURAÇÕES DO TEMPLATE DE E-MAIL -->
+        <template>
+            <email>
+                <birthdayreminder_envio_template_mes_aniversario translate="label" module="BirthdayReminder">
+                    <!-- Nome do Template -->
+                    <label>Lembrete de Aniversário - Mês do Aniversariante</label>
+                    <!-- Arquivo do Template -->
+                    <!-- O Arquivo se encontra em /app/locale/[IDIOMA]/template/email -->
+                    <file>birthdayreminder/mes_aniversariante.html</file>
+                    <!-- Define que o formato é HTML -->
+                    <type>html</type>
+                </birthdayreminder_envio_template_mes_aniversario>
+                <birthdayreminder_envio_template_data_aniversario translate="label" module="BirthdayReminder">
+                    <!-- Nome do Template -->
+                    <label>Lembrete de Aniversário - Dia do Aniversariante</label>
+                    <!-- Arquivo do Template -->
+                    <!-- O Arquivo se encontra em /app/locale/[IDIOMA]/template/email -->
+                    <file>birthdayreminder/data_aniversario.html</file>
+                    <!-- Define que o formato é HTML -->
+                    <type>html</type>
+                </birthdayreminder_envio_template_data_aniversario>
+            </email>
+        </template>
+        <resources>     
+            <dsalvagni_birthdayreminder_setup>        
+                <setup>         
+                    <module>DSalvagni_BirthdayReminder</module>
+                    <class>DSalvagni_BirthdayReminder_Model_Resource_Setup</class>
+                </setup>
+            </dsalvagni_birthdayreminder_setup>
+        </resources>
+    	<models>
+    		<birthdayreminder>
+    			<class>DSalvagni_BirthdayReminder_Model</class>
+                <resourceModel>birthdayreminder_resource</resourceModel>
+    		</birthdayreminder>
+            <birthdayreminder_resource>
+                <class>DSalvagni_BirthdayReminder_Model_Resource</class>
+                <entities>
+                    <report>
+                        <table>birthdayreminder_report</table>
+                    </report>
+                    <report_store>
+                        <table>birthdayreminder_report_store</table>
+                    </report_store>
+                </entities>
+            </birthdayreminder_resource>
+    	</models>
+        <events>
+          <checkout_type_onepage_save_order_after>
+              <observers>
+                  <updateReport>
+                      <type>model</type>
+                      <class>birthdayreminder/checkout</class>
+                      <method>updateReport</method>
+                  </updateReport>
+              </observers>
+          </checkout_type_onepage_save_order_after>
+      </events>
+
+        <helpers>
+           <BirthdayReminder>
+                  <class>DSalvagni_BirthdayReminder_Helper</class>
+            </BirthdayReminder>
+        </helpers>
+        
+    </global>
+    <crontab>
+        <jobs>
+            <birthdayreminder>
+                <schedule>
+                    <cron_expr>5,10,15,20,25,30,35,40,45,50,55 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>birthdayreminder/observer::runSchedule</model>
+                </run>
+            </birthdayreminder>
+        </jobs>
+    </crontab>
+    <default>
+         <BirthdayReminder>
+            <envio>
+                <habilitado>0</habilitado>
+                <horario>08,00,00</horario>
+                <enviar_data_aniversario>1</enviar_data_aniversario>
+                <enviar_mes_aniversariante>1</enviar_mes_aniversariante>
+                <intervalo>7</intervalo>
+			</envio>
+			<cupom_data_aniversario>
+				<cupom_data_aniversario_habilitado>0</cupom_data_aniversario_habilitado>
+				<usos_cupom_aniversario>1</usos_cupom_aniversario>
+				<validade_cupom_aniversario>30</validade_cupom_aniversario>
+			</cupom_data_aniversario>
+			<cupom_mes_aniversariante>
+				<cupom_aniversariante>0</cupom_aniversariante>
+				<usos_cupom_aniversariante>1</usos_cupom_aniversariante>
+				<validade_cupom_aniversariante>30</validade_cupom_aniversariante>
+			</cupom_mes_aniversariante>
+        </BirthdayReminder>
+    </default>
+</config>

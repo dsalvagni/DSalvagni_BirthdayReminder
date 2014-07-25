@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <DSalvagni_BirthdayReminder>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Customer />
+            </depends>
+        </DSalvagni_BirthdayReminder>
+    </modules>
+</config>
