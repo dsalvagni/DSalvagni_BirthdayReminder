@@ -90,7 +90,6 @@
          <BirthdayReminder>
             <envio>
                 <habilitado>0</habilitado>
-                <horario>08,00,00</horario>
                 <enviar_data_aniversario>1</enviar_data_aniversario>
                 <enviar_mes_aniversariante>1</enviar_mes_aniversariante>
                 <intervalo>7</intervalo>
@@ -98,7 +97,7 @@
 			<cupom_data_aniversario>
 				<cupom_data_aniversario_habilitado>0</cupom_data_aniversario_habilitado>
 				<usos_cupom_aniversario>1</usos_cupom_aniversario>
-				<validade_cupom_aniversario>30</validade_cupom_aniversario>
+				<validade_cupom_aniversario>1</validade_cupom_aniversario>
 			</cupom_data_aniversario>
 			<cupom_mes_aniversariante>
 				<cupom_aniversariante>0</cupom_aniversariante>
